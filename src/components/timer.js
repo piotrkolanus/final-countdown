@@ -12,19 +12,21 @@ const Timer = () => {
 
   useEffect(() => {
     const timer = setInterval(function() {
-      let now = new Date().getTime()
+      const now = new Date().getTime()
 
-      let interval = finalDate - now
+      const interval = finalDate - now
 
       if (interval === 0) {
         setIsCountdownEnd(true)
         this.clearInterval(timer)
       }
 
-      let d = Math.floor(interval / (1000 * 60 * 60 * 24))
-      let h = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      let m = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60))
-      let s = Math.floor((interval % (1000 * 60)) / 1000)
+      const d = Math.floor(interval / (1000 * 60 * 60 * 24))
+      const h = Math.floor(
+        (interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      )
+      const m = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60))
+      const s = Math.floor((interval % (1000 * 60)) / 1000)
 
       setTimeUnit({ days: d, hours: h, minutes: m, seconds: s })
     }, 1000)
